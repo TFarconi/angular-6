@@ -35,6 +35,10 @@ export class AnuncioService {
     return this.http.put<Anuncio>(this.anuncioUrl + `/${anuncio.id}`, anuncio);
   }
 
+  public delete(id: number): Observable<Object> {
+    return this.http.delete<Anuncio>(this.anuncioUrl + `/${id}`);
+  }
+
   public findAll(): Observable<Anuncio[]> {
     return this.http.get<Anuncio[]>(this.anuncioUrl);
   }

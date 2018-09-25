@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 import { TipoAnuncioService } from '../../../services/tipo-anuncio.service';
 import { TipoAnuncio } from '../../../models/tipo-anuncio.model';
@@ -20,6 +20,9 @@ export class AnuncioConsultaComponent implements OnInit {
   anuncioFiltro: AnuncioFiltro;
   anuncios: Anuncio[];
   tipoAnuncio: Observable<TipoAnuncio[]>;
+  nomeAnuncio: string;
+  idAnuncio: number;
+  exibeExclusao: boolean;
 
   constructor(private tipoAnuncioService: TipoAnuncioService,
               private anuncioService: AnuncioService,
@@ -27,19 +30,41 @@ export class AnuncioConsultaComponent implements OnInit {
 
   ngOnInit() {
     this.tipoAnuncio = this.tipoAnuncioService.findAll();
-    this.anuncioService.findAll().subscribe(result => {
-      this.anuncios = result;
-    });
+    this.buscarTudo();
+    this.exibeExclusao = false;
     this.formulario = this.formBuilder.group({
       tipo: [null, Validators.required],
       nome: [null, Validators.required],
     });
   }
 
-  pesquisar() {
+  public buscarTudo() {
+    this.anuncioService.findAll().subscribe(result => {
+      this.anuncios = result;
+    });
+  }
+
+  public pesquisar() {
     this.anuncioFiltro = this.formulario.value;
     this.anuncioService.getAnunciosByFilter(this.anuncioFiltro).subscribe(result => {
       this.anuncios = result;
+    });
+  }
+
+  public confirmaExclusao(anuncio: Anuncio): void {
+    this.nomeAnuncio = anuncio.nome;
+    this.idAnuncio = anuncio.id;
+    this.exibeExclusao = true;
+  }
+
+  public cancelarAnuncio(mensagem: string): void {
+    console.log(mensagem);
+  }
+
+  public excluirAnuncio(idExclusao: number) {
+    this.anuncioService.delete(idExclusao).subscribe(_ => {
+      alert('Anúncio de id: ' + idExclusao + ' removido com sucesso');
+      this.anuncios = this.anuncios.filter(anuncio => anuncio.id !== idExclusao);
     });
   }
 

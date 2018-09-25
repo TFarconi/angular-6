@@ -26,28 +26,20 @@
       "contato": "44373423124"
     },
     {
-      "tipo": "Imóveis",
-      "nome": "Anuncio",
-      "descricao": "Teste",
-      "valor": 622.22,
-      "contato": "85484984986",
-      "id": 2
-    },
-    {
-      "tipo": "Veículos",
-      "nome": "asdfasdf",
-      "descricao": "afsdfasd",
-      "valor": 23412340,
-      "contato": "42341234123",
-      "id": 3
-    },
-    {
+      "id": 4,
       "tipo": "Outros",
-      "nome": "TesteNovo",
-      "descricao": "gasdfasefasd",
-      "valor": 123123.12,
-      "contato": "12341234123",
-      "id": 4
+      "nome": "teste3",
+      "descricao": "teste3",
+      "valor": 23123.12,
+      "contato": "12312312312"
+    },
+    {
+      "id": 5,
+      "tipo": "Veículos",
+      "nome": "teste1",
+      "descricao": "teste1",
+      "valor": 45454.54,
+      "contato": "45454545"
     }
   ]
 }
