@@ -16,7 +16,7 @@
           <label for="tipo">&nbsp;&nbsp;Tipo de Anúncio *</label>
           <select class="form-control" formControlName="tipo">
             <option [value]="null">Selecione</option>
-            <option *ngFor="let tipo of tipoAnuncio | async" [value]="tipo.id"> {{tipo.nome}} </option>
+            <option *ngFor="let tipo of tipoAnuncio | async" [value]="tipo.nome"> {{tipo.nome}} </option>
           </select>
           <div *ngIf="campoValido('tipo')" class="alert alert-danger" role="alert">O campo tipo é obrigatório</div>
         </div>
@@ -74,8 +74,8 @@
       <div class="row">
         <div class="col-lg-6" >
         <div class="btn-group" >
-          <button type="button" class="btn btn-secundary" routerLink="../../anuncios"><i class="fa fa-ban"></i>&nbsp;Cancelar</button>
-          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Salvar</button>
+          <button type="button" class="btn btn-secundary" routerLink="/anuncios"><i class="fa fa-ban"></i>&nbsp;Cancelar</button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;{{ labelButton }}</button>
         </div>
       </div>
       </div>

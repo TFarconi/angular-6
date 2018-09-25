@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { Anuncio } from '../../../models/anuncio.model';
 import { AnuncioService } from '../../../services/anuncio.service';
 import { Imagem } from '../../../models/imagem.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Constants } from '../../../utils/constants';
 
 @Component({
@@ -20,27 +20,52 @@ import { Constants } from '../../../utils/constants';
 export class AnuncioCadastroComponent implements OnInit {
 
   formulario: FormGroup;
-
   tipoAnuncio: Observable<TipoAnuncio[]>;
-
   imagem: Imagem;
-
   anuncio: Anuncio;
+  id: any;
+  labelButton = 'Salvar';
 
   constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
               private tipoAnuncioService: TipoAnuncioService,
               private anuncioService: AnuncioService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.tipoAnuncio = this.tipoAnuncioService.findAll();
-    this.formulario = this.formBuilder.group({
-        tipo: [null, Validators.required],
-        nome: [null, Validators.required],
-        descricao: [null, Validators.required],
-        valor: [null, Validators.required],
-        contato: [null, Validators.required]
+    this.createFormgroup();
+
+    this.activatedRoute.params.subscribe(parametrosURL => {
+      this.id = parametrosURL['id'];
+      if (this.id !== undefined) {
+        this.labelButton = 'Alterar';
+        this.anuncioService.findById(this.id).subscribe(data => {
+          this.anuncio = data[0];
+          this.imagem = this.anuncio.imagem;
+          this.updateValuesFormControl();
+        });
+      }
     });
+  }
+
+  public updateValuesFormControl() {
+    Object.keys(this.anuncio).forEach(atributo => {
+      if (this.formulario.get(atributo)) {
+        this.formulario.get(atributo).setValue(this.anuncio[atributo]);
+      }
+    });
+  }
+
+  public createFormgroup(): void {
+    this.formulario = this.formBuilder.group({
+      id: [null],
+      tipo: [null, Validators.required],
+      nome: [null, Validators.required],
+      descricao: [null, Validators.required],
+      valor: [null, Validators.required],
+      contato: [null, Validators.required]
+  });
   }
 
   public campoValido(campo: string): boolean {
@@ -66,14 +91,22 @@ export class AnuncioCadastroComponent implements OnInit {
 
   public salvar(): void {
     if (this.formulario.valid) {
+
       this.anuncio = JSON.parse(JSON.stringify(this.formulario.value));
       this.anuncio.imagem = this.imagem;
 
-      console.log(this.anuncio);
-      this.anuncioService.insert(this.anuncio).subscribe(resultado => {
-        this.router.navigate([Constants.PATH_CONSULTA_ANUNCIO]);
-        alert('Anuncio salvo com sucesso ' + resultado.id);
-      });
+      if (this.id === undefined) {
+        this.anuncioService.insert(this.anuncio).subscribe(resultado => {
+          this.router.navigate([Constants.PATH_CONSULTA_ANUNCIO]);
+          alert('Anuncio salvo com sucesso ' + resultado.id);
+        });
+      } else {
+        this.anuncioService.update(this.anuncio).subscribe(_ => {
+          alert('Anúncio alterado com sucesso');
+          this.router.navigate([Constants.PATH_CONSULTA_ANUNCIO]);
+        });
+      }
+
     } else {
       alert('Formulário inválido, verifique os campos');
     }

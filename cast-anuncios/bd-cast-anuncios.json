@@ -18,44 +18,36 @@
   ],
   "anuncios": [
     {
-      "tipo": "1",
-      "nome": "Teste",
-      "descricao": "Teste",
-      "valor": "Teste",
-      "contato": "Teste",
-      "id": 1
+      "id": 1,
+      "tipo": "Veículos",
+      "nome": "Anuncio Teste 6",
+      "descricao": "teste",
+      "valor": 123412.34,
+      "contato": "44373423124"
     },
     {
-      "tipo": "1",
-      "nome": "Teste",
+      "tipo": "Imóveis",
+      "nome": "Anuncio",
       "descricao": "Teste",
-      "valor": "Teste",
-      "contato": "Teste",
+      "valor": 622.22,
+      "contato": "85484984986",
       "id": 2
     },
     {
-      "tipo": "1",
-      "nome": "Teste",
-      "descricao": "Teste",
-      "valor": "Teste",
-      "contato": "Teste",
+      "tipo": "Veículos",
+      "nome": "asdfasdf",
+      "descricao": "afsdfasd",
+      "valor": 23412340,
+      "contato": "42341234123",
       "id": 3
     },
     {
-      "tipo": "1",
-      "nome": "Teste",
-      "descricao": "safasdfsad",
-      "valor": "asdfasdf",
-      "contato": "asdfasdf",
+      "tipo": "Outros",
+      "nome": "TesteNovo",
+      "descricao": "gasdfasefasd",
+      "valor": 123123.12,
+      "contato": "12341234123",
       "id": 4
-    },
-    {
-      "tipo": "1",
-      "nome": "sadfa",
-      "descricao": "asdfasdf",
-      "valor": "asdfasfd",
-      "contato": "asdfasdf",
-      "id": 5
     }
   ]
 }
