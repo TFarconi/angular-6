@@ -1,0 +1,9 @@
+<div class="card" id="anuncio1">
+  <img class="card-img-top" src="{{anuncio.imagem.value}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ anuncio.nome }}</h5>
+    <p class="card-text">{{ anuncio.descricao }}</p>
+    <p class="card-text">Valor {{ anuncio.valor | currency: 'BRL' }}</p>
+    <p class="card-text">Contato {{ anuncio.contato | telefone }}</p>
+  </div>
+</div>

@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptor';
+import { HomeCardAnuncioComponent } from './components/home/home-card-anuncio/home-card-anuncio.component';
+import { TelefonePipe } from './utils/pipes/telefone.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptor';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    HomeCardAnuncioComponent,
+    TelefonePipe
   ],
   imports: [
     BrowserModule,

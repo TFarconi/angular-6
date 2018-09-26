@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AnuncioService } from '../../services/anuncio.service';
+import { Anuncio } from '../../models/anuncio.model';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  anuncios: Anuncio[];
+
+  constructor(public anuncioService: AnuncioService) { }
 
   ngOnInit() {
+    this.anuncioService.findAll().subscribe(result => {
+      this.anuncios = result;
+    });
   }
 
 }

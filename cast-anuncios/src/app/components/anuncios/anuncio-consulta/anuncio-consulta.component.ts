@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { TipoAnuncioService } from '../../../services/tipo-anuncio.service';
 import { TipoAnuncio } from '../../../models/tipo-anuncio.model';
@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AnuncioService } from '../../../services/anuncio.service';
 import { AnuncioFiltro } from '../../../models/anuncio-filtro.model';
 import { Anuncio } from '../../../models/anuncio.model';
+import { ConfirmaExclusaoComponent } from '../../../shared/confirma-exclusao/confirma-exclusao.component';
 
 @Component({
   selector: 'app-anuncio-consulta',
@@ -23,6 +24,8 @@ export class AnuncioConsultaComponent implements OnInit {
   nomeAnuncio: string;
   idAnuncio: number;
   exibeExclusao: boolean;
+
+  @ViewChild(ConfirmaExclusaoComponent) componenteExclusao: ConfirmaExclusaoComponent;
 
   constructor(private tipoAnuncioService: TipoAnuncioService,
               private anuncioService: AnuncioService,
@@ -55,6 +58,8 @@ export class AnuncioConsultaComponent implements OnInit {
     this.nomeAnuncio = anuncio.nome;
     this.idAnuncio = anuncio.id;
     this.exibeExclusao = true;
+    // @viewChild instancia do componente exclusão
+    // console.log(this.componenteExclusao);
   }
 
   public cancelarAnuncio(mensagem: string): void {
