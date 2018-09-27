@@ -79,6 +79,7 @@ export class AnuncioCadastroComponent implements OnInit {
   }
 
   public onSelectFile(event: any): void {
+    console.log(event.target.files[0]);
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       const reader = new FileReader();
@@ -98,6 +99,10 @@ export class AnuncioCadastroComponent implements OnInit {
 
       this.anuncio = JSON.parse(JSON.stringify(this.formulario.value));
       this.anuncio.imagem = this.imagem;
+
+      if (this.anuncio.imagem == null) {
+        this.anuncio.imagem = Constants.DEFAULT_IMAGE_64;
+      }
 
       if (this.id === undefined) {
         this.anuncioService.insert(this.anuncio).subscribe(resultado => {

@@ -11,9 +11,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptor';
 import { HomeCardAnuncioComponent } from './components/home/home-card-anuncio/home-card-anuncio.component';
-import { TelefonePipe } from './utils/pipes/telefone.pipe';
+import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptor';
+import { TelefoneModule } from './utils/pipes/telefone/telefone.module';
+import { VisualizarAnuncioModule } from './shared/visualizar-anuncio/visualizar-anuncio.module';
+import { DescricaoShortModule } from './utils/pipes/descricao-short/descricao-short.module';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { TelefonePipe } from './utils/pipes/telefone.pipe';
     HomeComponent,
     NotfoundComponent,
     HomeCardAnuncioComponent,
-    TelefonePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TelefoneModule,
+    DescricaoShortModule,
+    VisualizarAnuncioModule
   ],
   providers: [
     {
@@ -41,6 +45,8 @@ import { TelefonePipe } from './utils/pipes/telefone.pipe';
       useValue: 'pt-BR'
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

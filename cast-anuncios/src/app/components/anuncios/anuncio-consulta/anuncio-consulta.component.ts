@@ -24,6 +24,8 @@ export class AnuncioConsultaComponent implements OnInit {
   nomeAnuncio: string;
   idAnuncio: number;
   exibeExclusao: boolean;
+  exibeVisualizar: boolean;
+  anuncioVisualizado: Anuncio;
 
   @ViewChild(ConfirmaExclusaoComponent) componenteExclusao: ConfirmaExclusaoComponent;
 
@@ -35,6 +37,7 @@ export class AnuncioConsultaComponent implements OnInit {
     this.tipoAnuncio = this.tipoAnuncioService.findAll();
     this.buscarTudo();
     this.exibeExclusao = false;
+    this.exibeVisualizar = false;
     this.formulario = this.formBuilder.group({
       tipo: [null, Validators.required],
       nome: [null, Validators.required],
@@ -62,13 +65,17 @@ export class AnuncioConsultaComponent implements OnInit {
     // console.log(this.componenteExclusao);
   }
 
+  public visualizarAnuncio(anuncio: Anuncio): void {
+    this.anuncioVisualizado = anuncio;
+    this.exibeVisualizar = true;
+  }
+
   public cancelarAnuncio(mensagem: string): void {
     console.log(mensagem);
   }
 
   public excluirAnuncio(idExclusao: number) {
     this.anuncioService.delete(idExclusao).subscribe(_ => {
-      alert('Anúncio de id: ' + idExclusao + ' removido com sucesso');
       this.anuncios = this.anuncios.filter(anuncio => anuncio.id !== idExclusao);
     });
   }

@@ -22,7 +22,7 @@ export class TelefonePipe implements PipeTransform {
       numero2 = value.slice(7, 11);
     }
 
-    value = '(' + ddd + ')' + numero1 + '-' + numero2;
+    value = '(' + ddd + ')  ' + numero1 + '-' + numero2;
 
     return value;
   }

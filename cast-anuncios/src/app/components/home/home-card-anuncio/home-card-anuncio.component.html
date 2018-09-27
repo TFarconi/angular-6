@@ -1,9 +1,12 @@
-<div class="card" id="anuncio1">
-  <img class="card-img-top" src="{{anuncio.imagem.value}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{ anuncio.nome }}</h5>
-    <p class="card-text">{{ anuncio.descricao }}</p>
-    <p class="card-text">Valor {{ anuncio.valor | currency: 'BRL' }}</p>
-    <p class="card-text">Contato {{ anuncio.contato | telefone }}</p>
+<a data-toggle="modal" href="#modalVisualizar" (click)="visualizarAnuncio()">
+  <div class="card cardHover" id="anuncio1">
+    <img class="card-img-top" src="{{anuncioCard.imagem.value}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ anuncioCard.nome }}</h5>
+      <p class="card-text">{{ anuncioCard.descricao | descricaoShort }}</p>
+    </div>
   </div>
-</div>
+</a>
+<app-visualizar-anuncio *ngIf="exibeVisualizar"
+  [anuncioVisualizar]="anuncioVisualizado">
+</app-visualizar-anuncio>
