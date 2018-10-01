@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Anuncio } from '../../models/anuncio.model';
 
@@ -11,9 +11,15 @@ export class VisualizarAnuncioComponent implements OnInit {
 
   @Input() anuncioVisualizar: Anuncio;
 
+  @Output() eventoFechar: EventEmitter<void> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public fechar() {
+    this.eventoFechar.emit();
   }
 
 }

@@ -24,4 +24,8 @@ export class HomeCardAnuncioComponent implements OnInit {
     this.exibeVisualizar = false;
   }
 
+  public fechar(): void {
+    this.exibeVisualizar = false;
+  }
+
 }

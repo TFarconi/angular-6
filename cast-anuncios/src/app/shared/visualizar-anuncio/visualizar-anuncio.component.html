@@ -5,7 +5,7 @@
       <div class="modal-header"> 
         <h4 class="modal-title">Visualizar Anuncio</h4>
       </div>
-      <!-- model body section -->
+      <!-- modal body section -->
       <div class="modal-body">
         <div class="center">
           <img class="img-fluid" *ngIf="anuncioVisualizar.imagem" src="{{anuncioVisualizar.imagem.value}}" alt="Card image cap">
@@ -17,7 +17,7 @@
         <p>Contato: {{ anuncioVisualizar.contato | telefone }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="fechar()">Fechar</button>
       </div>
     </div>
   </div>
