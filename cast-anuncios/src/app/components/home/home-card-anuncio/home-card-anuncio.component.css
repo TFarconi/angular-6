@@ -3,9 +3,12 @@ a {
   text-decoration:none;
 }
 
+.card {
+  margin-bottom: 20px;
+}
+
 .cardHover {
     transition: font-size 0.5s ease-out, border 0.5s ease-out, background-color 0.5s, color 0.5s;
-    margin-bottom: 20px;
   }
 
   .card-title{
@@ -36,6 +39,6 @@ a {
   .cardHoverDestaque:hover {
     font-size: 1.05em;
     background-color: #ffc107;
-    border: 2px solid #FFC107;
+    border: 1px solid #FFC107;
     color: white;
   }

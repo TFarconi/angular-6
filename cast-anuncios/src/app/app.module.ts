@@ -12,10 +12,10 @@ import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { HomeCardAnuncioComponent } from './components/home/home-card-anuncio/home-card-anuncio.component';
-import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptor';
 import { TelefoneModule } from './utils/pipes/telefone/telefone.module';
 import { VisualizarAnuncioModule } from './shared/visualizar-anuncio/visualizar-anuncio.module';
 import { DescricaoShortModule } from './utils/pipes/descricao-short/descricao-short.module';
+import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptor';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,9 @@
-<a data-toggle="modal" href="#modalVisualizar" (click)="visualizarAnuncio()">
-  <div class="card cardHover" id="anuncio1">
+<a data-toggle="modal" href="#modalVisualizar" (click)="visualizarAnuncio()"> 
+  <div class="card" [ngClass]="!anuncioCard?.destaque ? 'cardHover' : 'cardHoverDestaque'" id="anuncio1">
     <img class="card-img-top" src="{{anuncioCard.imagem.value}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{ anuncioCard.nome }}</h5>
-      <p class="card-text">{{ anuncioCard.descricao | descricaoShort }}</p>
+      <p class="card-text">{{ anuncioCard.descricao | descricaoShort: 20 }}</p>
     </div>
   </div>
 </a>

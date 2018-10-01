@@ -11,10 +11,10 @@
           <img class="img-fluid" *ngIf="anuncioVisualizar.imagem" src="{{anuncioVisualizar.imagem.value}}" alt="Card image cap">
         </div>
         <h5 class="card-title">{{ anuncioVisualizar.nome }}</h5>
-        <p>Tipo de Anúncio: {{ anuncioVisualizar.tipo }}</p>
-        <p>Descrição: {{ anuncioVisualizar.descricao }}</p>
-        <p>Valor: {{ anuncioVisualizar.valor | currency: 'BRL' }}</p>
-        <p>Contato: {{ anuncioVisualizar.contato | telefone }}</p>
+        <p class="card-text">Tipo de Anúncio: {{ anuncioVisualizar.tipo }}</p>
+        <p class="card-text">Descrição: {{ anuncioVisualizar.descricao }}</p>
+        <p class="card-text">Valor: {{ anuncioVisualizar.valor | currency: 'BRL' }}</p>
+        <p class="card-text">Contato: {{ anuncioVisualizar.contato | telefone }}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="fechar()">Fechar</button>

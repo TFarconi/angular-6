@@ -47,6 +47,10 @@ export class AnuncioService {
     return this.http.get<Anuncio>(this.anuncioUrl + '?id=' + id);
   }
 
+  public findByNome(texto: string): Observable<Anuncio[]> {
+    return this.http.get<Anuncio[]>(this.anuncioUrl + '?nome_like=' + texto);
+  }
+
   public getAnunciosByFilter(anuncioFiltro: AnuncioFiltro): Observable<Anuncio[]> {
     if (anuncioFiltro.tipo !== 'null' && anuncioFiltro.nome !== null) {
       return this.http.get<Anuncio[]>(this.anuncioUrl + '?tipo=' + anuncioFiltro.tipo + '&nome_like=' + anuncioFiltro.nome);
