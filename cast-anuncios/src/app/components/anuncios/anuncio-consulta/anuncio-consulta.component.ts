@@ -26,6 +26,7 @@ export class AnuncioConsultaComponent implements OnInit {
   exibeExclusao: boolean;
   exibeVisualizar: boolean;
   anuncioVisualizado: Anuncio;
+  p = 1;
 
   @ViewChild(ConfirmaExclusaoComponent) componenteExclusao: ConfirmaExclusaoComponent;
 

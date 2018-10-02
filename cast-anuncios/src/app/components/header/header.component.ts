@@ -12,9 +12,9 @@ import { Anuncio } from '../../models/anuncio.model';
 export class HeaderComponent implements OnInit {
 
   private subjectPesquisa: Subject<string> = new Subject<string>();
-  private anuncios: Observable<Anuncio[]>;
+  public anuncios: Observable<Anuncio[]>;
   private anuncioVisualizado: Anuncio;
-  private exibeVisualizar: boolean;
+  public exibeVisualizar: boolean;
 
   constructor(private anuncioService: AnuncioService) { }
 
